@@ -1,7 +1,9 @@
-package pl.mosenko.churchorganisttrainer;
+package pl.mosenko.churchorganisttrainer.mvp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import pl.mosenko.churchorganisttrainer.R;
 
 public class MainActivity extends AppCompatActivity {
 
