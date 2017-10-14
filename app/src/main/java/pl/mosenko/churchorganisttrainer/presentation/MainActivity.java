@@ -1,4 +1,4 @@
-package pl.mosenko.churchorganisttrainer.mvp;
+package pl.mosenko.churchorganisttrainer.presentation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
