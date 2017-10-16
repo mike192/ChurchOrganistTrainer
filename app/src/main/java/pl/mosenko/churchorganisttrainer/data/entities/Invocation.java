@@ -3,6 +3,7 @@ package pl.mosenko.churchorganisttrainer.data.entities;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -26,20 +27,19 @@ public class Invocation {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
-
     @ColumnInfo(name = "invocation_name")
     private String invocationName;
-
     @ColumnInfo(name = "created_at")
     private Date createdAt;
-
     private String author;
-
     @ColumnInfo(name = "lowest_tone_id")
     private Integer lowestToneId;
-
+    @Ignore
+    private Tone lowestTone;
     @ColumnInfo(name = "highest_tone_id")
     private Integer highestToneId;
+    @Ignore
+    private Tone highestTone;
 
     public int getId() {
         return id;
@@ -87,6 +87,22 @@ public class Invocation {
 
     public void setHighestToneId(Integer highestToneId) {
         this.highestToneId = highestToneId;
+    }
+
+    public Tone getLowestTone() {
+        return lowestTone;
+    }
+
+    public void setLowestTone(Tone lowestTone) {
+        this.lowestTone = lowestTone;
+    }
+
+    public Tone getHighestTone() {
+        return highestTone;
+    }
+
+    public void setHighestTone(Tone highestTone) {
+        this.highestTone = highestTone;
     }
 }
 

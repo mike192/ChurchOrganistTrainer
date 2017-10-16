@@ -6,6 +6,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
+import pl.mosenko.churchorganisttrainer.data.dao.InvocationDao;
 import pl.mosenko.churchorganisttrainer.data.dao.ToneDao;
 import pl.mosenko.churchorganisttrainer.data.entities.Invocation;
 import pl.mosenko.churchorganisttrainer.data.entities.InvocationTone;
@@ -19,6 +20,8 @@ public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase INSTANCE;
 
     public abstract ToneDao toneDao();
+
+    public abstract InvocationDao invocationDao();
 
     public static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {

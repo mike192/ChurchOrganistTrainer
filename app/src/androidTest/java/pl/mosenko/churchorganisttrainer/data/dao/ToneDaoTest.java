@@ -1,4 +1,4 @@
-package pl.mosenko.churchorganisttrainer;
+package pl.mosenko.churchorganisttrainer.data.dao;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.persistence.room.Room;
@@ -18,7 +18,7 @@ import pl.mosenko.churchorganisttrainer.data.AppDatabase;
 import pl.mosenko.churchorganisttrainer.data.entities.Tone;
 
 @RunWith(AndroidJUnit4.class)
-public class DbDaoTest {
+public class ToneDaoTest {
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
