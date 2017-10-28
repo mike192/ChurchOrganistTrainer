@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Trener organisty</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Otwórz wysuwane menu</string>
+    <string name="navigation_drawer_close">Zamknij wysuwane menu</string>
 
     <!-- Drawer menu -->
     <string name="invocation_title">Wezwania</string>
