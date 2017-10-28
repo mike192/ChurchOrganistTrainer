@@ -1,0 +1,238 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "23b98dab470d7a212d32c0a983bca6e0",
+    "entities": [
+      {
+        "tableName": "invocations",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `invocation_name` TEXT, `created_at` INTEGER, `author` TEXT, `lowest_tone_id` INTEGER, `highest_tone_id` INTEGER, FOREIGN KEY(`lowest_tone_id`) REFERENCES `tones`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`highest_tone_id`) REFERENCES `tones`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invocationName",
+            "columnName": "invocation_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "created_at",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lowestToneId",
+            "columnName": "lowest_tone_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "highestToneId",
+            "columnName": "highest_tone_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_invocations_lowest_tone_id",
+            "unique": false,
+            "columnNames": [
+              "lowest_tone_id"
+            ],
+            "createSql": "CREATE  INDEX `index_invocations_lowest_tone_id` ON `${TABLE_NAME}` (`lowest_tone_id`)"
+          },
+          {
+            "name": "index_invocations_highest_tone_id",
+            "unique": false,
+            "columnNames": [
+              "highest_tone_id"
+            ],
+            "createSql": "CREATE  INDEX `index_invocations_highest_tone_id` ON `${TABLE_NAME}` (`highest_tone_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tones",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "lowest_tone_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "tones",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "highest_tone_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "invocation_tones",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `invocation_id` INTEGER NOT NULL, `tone_id` INTEGER NOT NULL, `full_path` TEXT, FOREIGN KEY(`invocation_id`) REFERENCES `invocations`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`tone_id`) REFERENCES `tones`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invocationId",
+            "columnName": "invocation_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toneId",
+            "columnName": "tone_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fullPath",
+            "columnName": "full_path",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_invocation_tones_full_path",
+            "unique": true,
+            "columnNames": [
+              "full_path"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_invocation_tones_full_path` ON `${TABLE_NAME}` (`full_path`)"
+          },
+          {
+            "name": "index_invocation_tones_invocation_id",
+            "unique": false,
+            "columnNames": [
+              "invocation_id"
+            ],
+            "createSql": "CREATE  INDEX `index_invocation_tones_invocation_id` ON `${TABLE_NAME}` (`invocation_id`)"
+          },
+          {
+            "name": "index_invocation_tones_tone_id",
+            "unique": false,
+            "columnNames": [
+              "tone_id"
+            ],
+            "createSql": "CREATE  INDEX `index_invocation_tones_tone_id` ON `${TABLE_NAME}` (`tone_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "invocations",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "invocation_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "tones",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "tone_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "tones",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tone_name_pl` TEXT, `tone_name_us` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toneNamePL",
+            "columnName": "tone_name_pl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "toneNameUS",
+            "columnName": "tone_name_us",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_tones_tone_name_pl",
+            "unique": true,
+            "columnNames": [
+              "tone_name_pl"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_tones_tone_name_pl` ON `${TABLE_NAME}` (`tone_name_pl`)"
+          },
+          {
+            "name": "index_tones_tone_name_us",
+            "unique": true,
+            "columnNames": [
+              "tone_name_us"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_tones_tone_name_us` ON `${TABLE_NAME}` (`tone_name_us`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"23b98dab470d7a212d32c0a983bca6e0\")"
+    ]
+  }
+}

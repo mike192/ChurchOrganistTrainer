@@ -1,15 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "pl.mosenko.churchorganisttrainer"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -17,14 +22,55 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+project.ext {
+    daggerVersion = "2.11"
+    rxJavaVersion = "2.0.1"
+    roomVersion = "1.0.0-beta1"
+    guavaVersion = "18.0"
+    appCompatVersion = "26.1.0"
+    contraintLayoutVersion = "1.0.2"
+    espressoCoreVersion = "2.2.2"
+    jUnitVersion = "4.12"
+    timberVersion = "4.5.1"
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    //Room
+    implementation "android.arch.persistence.room:runtime:$project.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$project.roomVersion"
+    implementation "android.arch.persistence.room:rxjava2:$project.roomVersion"
+
+    //RxJava
+    compile "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$project.rxJavaVersion"
+
+    //Dagger
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    compile "com.google.dagger:dagger:$project.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$project.daggerVersion"
+
+    //Google Guava
+    compile "com.google.guava:guava:$project.guavaVersion"
+
+    //Android support
+    compile "com.android.support:appcompat-v7:$project.appCompatVersion"
+    compile "com.android.support.constraint:constraint-layout:$project.contraintLayoutVersion"
+
+    // Timber
+    compile "com.jakewharton.timber:timber:$project.timberVersion"
+
+    //TEST libraries
+    androidTestImplementation "android.arch.core:core-testing:$project.roomVersion"
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$project.espressoCoreVersion", {
+        exclude group: "com.android.support', module: 'support-annotations"
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:$project.jUnitVersion"
 }
