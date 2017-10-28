@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/topNavigationMenu"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/invocationItem"
+            android:icon="@drawable/ic_invocation"
+            android:title="@string/invocation_title" />
+        <item
+            android:id="@+id/invocationsSetsItem"
+            android:title="@string/invocations_sets_title"
+            android:icon="@drawable/ic_invocations_set"/>
+        <item
+            android:id="@+id/statisticsItem"
+            android:icon="@drawable/ic_insert_chart"
+            android:title="@string/statistics_title" />
+    </group>
+    <group
+        android:id="@+id/bottomNavigationMenu"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/settingsItem"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings_title" />
+        <item
+            android:id="@+id/sendOpinionItem"
+            android:icon="@drawable/ic_send_opinion"
+            android:title="@string/send_opinion_title" />
+        <item
+            android:id="@+id/aboutApplicationItem"
+            android:icon="@drawable/ic_app_info"
+            android:title="@string/about_app_title" />
+    </group>
+</menu>

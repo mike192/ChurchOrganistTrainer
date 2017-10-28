@@ -38,9 +38,12 @@ project.ext {
     espressoCoreVersion = "2.2.2"
     jUnitVersion = "4.12"
     timberVersion = "4.5.1"
+    butterKnifeVersion = "8.8.1"
 }
 
 dependencies {
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //Room
     implementation "android.arch.persistence.room:runtime:$project.roomVersion"
@@ -56,6 +59,10 @@ dependencies {
     compile "com.google.dagger:dagger:$project.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
     compile "com.google.dagger:dagger-android-support:$project.daggerVersion"
+
+    //ButterKnife
+    compile "com.jakewharton:butterknife:$project.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterKnifeVersion"
 
     //Google Guava
     compile "com.google.guava:guava:$project.guavaVersion"
