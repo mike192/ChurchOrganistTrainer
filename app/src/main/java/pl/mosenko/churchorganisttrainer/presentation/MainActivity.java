@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         addListenerToAddFab();
         syncDrawerMenuWithToolbar();
+        addListenerToNavigationView();
+    }
+
+    private void addListenerToNavigationView() {
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
     }
 
+    //TODO to change
     private void addListenerToAddFab() {
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +65,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
