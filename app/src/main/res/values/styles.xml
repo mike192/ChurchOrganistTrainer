@@ -15,14 +15,12 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="AppTheme.ToLearningItem">
-        <item name="android:textSize">@dimen/list_item_text_size</item>
+    <style name="AppTheme.MainItem.ToLearningItem">
         <item name="android:textColor">@color/primaryColor</item>
     </style>
 
-    <style name="AppTheme.LearntItem">
-        <item name="android:textSize">@dimen/list_item_text_size</item>
-        <item name="android:textColor">#0e8df4</item>
+    <style name="AppTheme.MainItem.LearntItem">
+        <item name="android:textColor">@color/sucessfullTextColor</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

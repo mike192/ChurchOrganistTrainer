@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/list_item_height"
     android:orientation="horizontal">
 
     <TextView
@@ -28,16 +29,15 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/AppTheme.LearntItem"
+        android:textAppearance="@style/AppTheme.MainItem.LearntItem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/numberOfPassedForFirstTimeTV"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513"
         tools:text="15" />
 
     <TextView
         android:id="@+id/numberOfPassedForFirstTimeTV"
-        style="@style/AppTheme.ToLearningItem"
+        style="@style/AppTheme.MainItem.ToLearningItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -46,7 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513"
         tools:text="13" />
 
 
