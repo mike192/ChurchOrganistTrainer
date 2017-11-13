@@ -9,6 +9,7 @@ import java.util.List;
 
 import io.reactivex.Maybe;
 import pl.mosenko.churchorganisttrainer.data.entities.Invocation;
+import pl.mosenko.churchorganisttrainer.data.entities.InvocationRelational;
 
 /**
  * Created by syk on 14.10.17.
@@ -17,11 +18,14 @@ import pl.mosenko.churchorganisttrainer.data.entities.Invocation;
 @Dao
 public interface InvocationDao {
 
-    @Query("select * from invocations")
-    Maybe<List<Invocation>> getInvocations();
+//    @Query("select * from invocations")
+//    Maybe<List<Invocation>> getInvocations();
 
     @Query("select * from invocations where id = :invocationId")
     Maybe<Invocation> getInvocationById(int invocationId);
+
+    @Query("select * from invocations")
+    Maybe<List<InvocationRelational>> getInvocations();
 
     @Insert
     void insert(Invocation invocation);
