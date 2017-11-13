@@ -3,6 +3,7 @@ package pl.mosenko.churchorganisttrainer.data.entities;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "tones_statistics", foreignKeys = {
@@ -16,7 +17,7 @@ import android.arch.persistence.room.PrimaryKey;
                 childColumns = "invocation_statistic_id",
                 onUpdate = ForeignKey.CASCADE,
                 onDelete = ForeignKey.CASCADE),
-})
+}, indices = {@Index("tone_id"), @Index("invocation_statistic_id")})
 public class TonesStatistic {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

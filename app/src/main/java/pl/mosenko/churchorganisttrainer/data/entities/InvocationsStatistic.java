@@ -15,7 +15,7 @@ import java.util.Date;
         childColumns = "invocation_id",
         onDelete = ForeignKey.CASCADE,
         onUpdate = ForeignKey.CASCADE
-), indices = @Index("date_of_exercise"))
+), indices = {@Index("date_of_exercise"), @Index("invocation_id")})
 public class InvocationsStatistic {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

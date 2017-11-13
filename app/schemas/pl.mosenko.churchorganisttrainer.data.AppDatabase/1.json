@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "23b98dab470d7a212d32c0a983bca6e0",
+    "identityHash": "3e323f3db50c6b37cd644bfd271fbd8b",
     "entities": [
       {
         "tableName": "invocations",
@@ -228,11 +228,168 @@
           }
         ],
         "foreignKeys": []
+      },
+      {
+        "tableName": "tones_statistics",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tone_id` INTEGER NOT NULL, `invocation_statistic_id` INTEGER NOT NULL, `incorrect_answers_number` INTEGER NOT NULL, `good_answers_number` INTEGER NOT NULL, `perfect_answers_number` INTEGER NOT NULL, FOREIGN KEY(`tone_id`) REFERENCES `tones`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`invocation_statistic_id`) REFERENCES `invocations_statistic`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toneId",
+            "columnName": "tone_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invocationsStatisticId",
+            "columnName": "invocation_statistic_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "incorrectAnswersNumber",
+            "columnName": "incorrect_answers_number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goodAnswersNumber",
+            "columnName": "good_answers_number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "perfectAnswersNumber",
+            "columnName": "perfect_answers_number",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_tones_statistics_tone_id",
+            "unique": false,
+            "columnNames": [
+              "tone_id"
+            ],
+            "createSql": "CREATE  INDEX `index_tones_statistics_tone_id` ON `${TABLE_NAME}` (`tone_id`)"
+          },
+          {
+            "name": "index_tones_statistics_invocation_statistic_id",
+            "unique": false,
+            "columnNames": [
+              "invocation_statistic_id"
+            ],
+            "createSql": "CREATE  INDEX `index_tones_statistics_invocation_statistic_id` ON `${TABLE_NAME}` (`invocation_statistic_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tones",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "tone_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "invocations_statistic",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "invocation_statistic_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "invocations_statistic",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `invocation_id` INTEGER NOT NULL, `date_of_exercise` INTEGER, `percentage_result` REAL, FOREIGN KEY(`invocation_id`) REFERENCES `invocations`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "invocationId",
+            "columnName": "invocation_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dateOfExercise",
+            "columnName": "date_of_exercise",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "percentageResult",
+            "columnName": "percentage_result",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_invocations_statistic_date_of_exercise",
+            "unique": false,
+            "columnNames": [
+              "date_of_exercise"
+            ],
+            "createSql": "CREATE  INDEX `index_invocations_statistic_date_of_exercise` ON `${TABLE_NAME}` (`date_of_exercise`)"
+          },
+          {
+            "name": "index_invocations_statistic_invocation_id",
+            "unique": false,
+            "columnNames": [
+              "invocation_id"
+            ],
+            "createSql": "CREATE  INDEX `index_invocations_statistic_invocation_id` ON `${TABLE_NAME}` (`invocation_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "invocations",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "invocation_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"23b98dab470d7a212d32c0a983bca6e0\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3e323f3db50c6b37cd644bfd271fbd8b\")"
     ]
   }
 }

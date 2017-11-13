@@ -11,10 +11,13 @@ import pl.mosenko.churchorganisttrainer.data.dao.InvocationsStatisticDao;
 import pl.mosenko.churchorganisttrainer.data.dao.ToneDao;
 import pl.mosenko.churchorganisttrainer.data.entities.Invocation;
 import pl.mosenko.churchorganisttrainer.data.entities.InvocationTone;
+import pl.mosenko.churchorganisttrainer.data.entities.InvocationsStatistic;
 import pl.mosenko.churchorganisttrainer.data.entities.Tone;
+import pl.mosenko.churchorganisttrainer.data.entities.TonesStatistic;
 import pl.mosenko.churchorganisttrainer.utils.DateTypeConverter;
 
-@Database(entities = {Invocation.class, InvocationTone.class, Tone.class}, version = 1)
+@Database(entities = {Invocation.class, InvocationTone.class, Tone.class,
+        TonesStatistic.class, InvocationsStatistic.class}, version = 1)
 @TypeConverters(DateTypeConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "invocations.db";

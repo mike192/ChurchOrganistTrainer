@@ -20,8 +20,8 @@ public interface ToneDao {
     Maybe<Tone> getToneById(int toneId);
 
     @Insert
-    void insert(Tone tone);
+    Long insert(Tone tone);
 
     @Delete
-    void delete(Tone tone);
+    int delete(Tone tone);
 }
