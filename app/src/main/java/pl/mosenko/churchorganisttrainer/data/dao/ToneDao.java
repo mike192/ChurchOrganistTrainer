@@ -22,6 +22,9 @@ public interface ToneDao {
     @Insert
     Long insert(Tone tone);
 
+    @Insert
+    List<Long> insertAll(List<Tone> tone);
+
     @Delete
     int delete(Tone tone);
 }

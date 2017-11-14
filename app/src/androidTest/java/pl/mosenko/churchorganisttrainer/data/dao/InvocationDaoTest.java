@@ -64,7 +64,7 @@ public class InvocationDaoTest {
         invocationDao.insert(invocation);
         //Then
         invocationDao.getInvocations().test().assertValue(invocations
-                -> invocations.get(0).getInvocation()
+                -> invocations.get(0)
                 .getInvocationName().equals(invocation.getInvocationName()));
     }
 

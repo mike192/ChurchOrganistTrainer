@@ -9,7 +9,7 @@ import android.arch.persistence.room.PrimaryKey;
         @Index(value = "tone_name_pl", unique = true),
         @Index(value = "tone_name_us", unique = true)})
 public class Tone {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "id")
     private int id;
 

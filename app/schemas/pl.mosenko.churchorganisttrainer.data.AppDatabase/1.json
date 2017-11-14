@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3e323f3db50c6b37cd644bfd271fbd8b",
+    "identityHash": "9a6d4a8d239f810636556088527a1df0",
     "entities": [
       {
         "tableName": "invocations",
@@ -182,7 +182,7 @@
       },
       {
         "tableName": "tones",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tone_name_pl` TEXT, `tone_name_us` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `tone_name_pl` TEXT, `tone_name_us` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -207,7 +207,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [
           {
@@ -389,7 +389,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3e323f3db50c6b37cd644bfd271fbd8b\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9a6d4a8d239f810636556088527a1df0\")"
     ]
   }
 }

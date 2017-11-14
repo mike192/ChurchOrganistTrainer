@@ -40,6 +40,7 @@ project.ext {
     jUnitVersion = "4.12"
     timberVersion = "4.5.1"
     butterKnifeVersion = "8.8.1"
+    gsonVersion = "2.8.2"
 }
 
 dependencies {
@@ -69,6 +70,9 @@ dependencies {
 
     //Google Guava
     compile "com.google.guava:guava:$project.guavaVersion"
+
+    //Gson
+    compile "com.google.code.gson:gson:$project.gsonVersion"
 
     //Android support
     compile "com.android.support:appcompat-v7:$project.appCompatVersion"
