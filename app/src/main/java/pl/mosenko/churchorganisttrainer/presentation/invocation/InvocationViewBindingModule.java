@@ -8,8 +8,8 @@ import dagger.Module;
  */
 
 @Module
-public abstract class InvocationViewModule {
+public abstract class InvocationViewBindingModule {
 
     @Binds
-    abstract InvocationContract.View provideInvocationView(InvocationActivity invocationActivity);
+    abstract InvocationContract.View provideInvocationView(InvocationFragment invocationFragment);
 }

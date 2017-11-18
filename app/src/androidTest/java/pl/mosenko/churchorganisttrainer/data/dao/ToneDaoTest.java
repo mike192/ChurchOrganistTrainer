@@ -45,9 +45,9 @@ public class ToneDaoTest {
         final Tone tone1 = new Tone();
         tone1.setToneNamePL("h");
         tone1.setToneNameUS("b");
-        appDatabase.toneDao().insert(tone1);
+        appDatabase.getToneDao().insert(tone1);
 
-        appDatabase.toneDao().getTones()
+        appDatabase.getToneDao().getTones()
                 .test()
                 .assertValue(new Predicate<List<Tone>>() {
                     @Override

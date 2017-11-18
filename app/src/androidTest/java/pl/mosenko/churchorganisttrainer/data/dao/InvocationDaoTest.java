@@ -60,7 +60,7 @@ public class InvocationDaoTest {
      //   appDatabase.toneDao().insert(tone1);
 
         //When
-        InvocationDao invocationDao = appDatabase.invocationDao();
+        InvocationDao invocationDao = appDatabase.getInvocationDao();
         invocationDao.insert(invocation);
         //Then
         invocationDao.getInvocations().test().assertValue(invocations

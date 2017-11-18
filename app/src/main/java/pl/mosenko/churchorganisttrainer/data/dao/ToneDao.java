@@ -23,7 +23,7 @@ public interface ToneDao {
     Long insert(Tone tone);
 
     @Insert
-    List<Long> insertAll(List<Tone> tone);
+    List<Long> insertAll(List<Tone> tones);
 
     @Delete
     int delete(Tone tone);

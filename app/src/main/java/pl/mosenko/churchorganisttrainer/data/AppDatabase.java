@@ -17,29 +17,15 @@ import pl.mosenko.churchorganisttrainer.data.entities.TonesStatistic;
 import pl.mosenko.churchorganisttrainer.utils.DateTypeConverter;
 
 @Database(entities = {Invocation.class, InvocationTone.class, Tone.class,
-        TonesStatistic.class, InvocationsStatistic.class}, version = 1)
+        TonesStatistic.class, InvocationsStatistic.class}, version = AppDatabase.VERSION)
 @TypeConverters(DateTypeConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
-    private static final String DATABASE_NAME = "invocations.db";
-    private static volatile AppDatabase INSTANCE;
+    public static final String DATABASE_NAME = "invocations.db";
+    static final int VERSION = 1;
 
-    public abstract ToneDao toneDao();
+    public abstract ToneDao getToneDao();
 
-    public abstract InvocationDao invocationDao();
+    public abstract InvocationDao getInvocationDao();
 
-    public abstract InvocationsStatisticDao invocationsStatisticDao();
-
-    public static AppDatabase getInstance(Context context) {
-        if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, DATABASE_NAME)
-                            //.addCallback(new AppDatabaseCallback(context, toneDao()))
-                            .build();
-                }
-            }
-        }
-        return INSTANCE;
-    }
+    public abstract InvocationsStatisticDao getInvocationsStatisticDao();
 }

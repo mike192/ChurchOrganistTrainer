@@ -5,18 +5,27 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "tones", indices = {
-        @Index(value = "tone_name_pl", unique = true),
-        @Index(value = "tone_name_us", unique = true)})
+import static pl.mosenko.churchorganisttrainer.data.entities.Tone.TABLE_NAME;
+import static pl.mosenko.churchorganisttrainer.data.entities.Tone.TONE_NAME_PL_COLUMN;
+import static pl.mosenko.churchorganisttrainer.data.entities.Tone.TONE_NAME_US_COLUMN;
+
+@Entity(tableName = TABLE_NAME, indices = {
+        @Index(value = TONE_NAME_PL_COLUMN, unique = true),
+        @Index(value = TONE_NAME_US_COLUMN, unique = true)})
 public class Tone {
+    public static final String TABLE_NAME = "tones";
+    public static final String ID_COLUMN = "id";
+    public static final String TONE_NAME_PL_COLUMN = "tone_name_pl";
+    public static final String TONE_NAME_US_COLUMN = "tone_name_us";
+
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = ID_COLUMN)
     private int id;
 
-    @ColumnInfo(name = "tone_name_pl")
+    @ColumnInfo(name = TONE_NAME_PL_COLUMN)
     private String toneNamePL;
 
-    @ColumnInfo(name = "tone_name_us")
+    @ColumnInfo(name = TONE_NAME_US_COLUMN)
     private String toneNameUS;
 
     public int getId() {
