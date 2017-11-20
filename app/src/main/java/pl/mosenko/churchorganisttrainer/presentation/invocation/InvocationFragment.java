@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
 import pl.mosenko.churchorganisttrainer.R;
+import pl.mosenko.churchorganisttrainer.data.AppDatabase;
+import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseFragment;
 
 
 /**
@@ -23,7 +25,9 @@ import pl.mosenko.churchorganisttrainer.R;
  * Use the {@link InvocationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InvocationFragment extends Fragment implements InvocationContract.View {
+public class InvocationFragment extends BaseViewFragment<InvocationContract.Presenter> implements InvocationContract.View {
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -72,14 +76,14 @@ public class InvocationFragment extends Fragment implements InvocationContract.V
 
     @Override
     public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this);
+   //     AndroidSupportInjection.inject(this);
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override

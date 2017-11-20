@@ -1,7 +1,7 @@
 package pl.mosenko.churchorganisttrainer.presentation.invocation;
 
-import pl.mosenko.churchorganisttrainer.presentation.BasePresenter;
-import pl.mosenko.churchorganisttrainer.presentation.BaseView;
+import pl.mosenko.churchorganisttrainer.presentation.common.presenter.MVPPresenter;
+import pl.mosenko.churchorganisttrainer.presentation.common.view.MVPView;
 
 /**
  * Created by syk on 16.10.17.
@@ -9,11 +9,11 @@ import pl.mosenko.churchorganisttrainer.presentation.BaseView;
 
 public interface InvocationContract {
 
-    interface View extends BaseView {
+    interface View extends MVPView {
 
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends MVPPresenter {
 
     }
 

@@ -33,9 +33,7 @@ public class AndroidApplication extends Application implements HasActivityInject
 
     private void initializeDIComponent() {
         DaggerAppComponent
-                .builder()
-                .application(this)
-                .build()
+                .create()
                 .inject(this);
     }
 

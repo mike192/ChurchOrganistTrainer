@@ -20,11 +20,12 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
 import pl.mosenko.churchorganisttrainer.R;
+import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseActivity;
 import pl.mosenko.churchorganisttrainer.presentation.invocation.InvocationFragment;
 import pl.mosenko.churchorganisttrainer.utils.ActivityUtil;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HasFragmentInjector {
+public class MainActivity extends BaseActivity
+        implements NavigationView.OnNavigationItemSelectedListener/*, HasFragmentInjector*/ {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     @BindView(R.id.navView)
     NavigationView navigationView;
-    @Inject
-    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+/*    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
+/*    @Override
     public AndroidInjector<Fragment> fragmentInjector() {
         return fragmentDispatchingAndroidInjector;
-    }
+    }*/
 }
