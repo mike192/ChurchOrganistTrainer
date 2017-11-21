@@ -1,4 +1,4 @@
-package pl.mosenko.churchorganisttrainer.presentation.invocation;
+package pl.mosenko.churchorganisttrainer.presentation.common.view;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -6,8 +6,6 @@ import android.support.annotation.CallSuper;
 import javax.inject.Inject;
 
 import pl.mosenko.churchorganisttrainer.presentation.common.presenter.MVPPresenter;
-import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseFragment;
-import pl.mosenko.churchorganisttrainer.presentation.common.view.MVPView;
 
 /**
  * Created by syk on 20.11.17.

@@ -28,4 +28,7 @@ public interface InvocationDao {
 
     @Delete
     int delete(Invocation invocation);
+
+    @Insert
+    List<Long> insertAll(List<Invocation> invocations);
 }

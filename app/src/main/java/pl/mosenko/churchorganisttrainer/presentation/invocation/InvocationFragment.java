@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-import dagger.android.support.AndroidSupportInjection;
 import pl.mosenko.churchorganisttrainer.R;
-import pl.mosenko.churchorganisttrainer.data.AppDatabase;
-import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseFragment;
+import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseViewFragment;
 
 
 /**

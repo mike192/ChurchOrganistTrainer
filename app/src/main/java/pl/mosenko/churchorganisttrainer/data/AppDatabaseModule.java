@@ -7,7 +7,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.mosenko.churchorganisttrainer.data.dao.InvocationDao;
 import pl.mosenko.churchorganisttrainer.data.dao.ToneDao;
+import pl.mosenko.churchorganisttrainer.data.repository.InvocationDataSource;
+import pl.mosenko.churchorganisttrainer.data.repository.InvocationRepository;
 import pl.mosenko.churchorganisttrainer.data.repository.ToneDataSource;
 import pl.mosenko.churchorganisttrainer.data.repository.ToneRepository;
 
@@ -21,7 +24,7 @@ public class AppDatabaseModule {
     @Singleton
     @Provides
     public AppDatabaseCallback provideAppDatabaseCallback(Context context) {
-       return new AppDatabaseCallback(context);
+        return new AppDatabaseCallback(context);
     }
 
     @Singleton
@@ -44,4 +47,15 @@ public class AppDatabaseModule {
         return new ToneDataSource(toneDao);
     }
 
+    @Singleton
+    @Provides
+    public InvocationDao provideInvocationDao(AppDatabase appDatabase) {
+        return appDatabase.getInvocationDao();
+    }
+
+    @Singleton
+    @Provides
+    public InvocationRepository provideInvocationRepository(InvocationDao invocationDao) {
+        return new InvocationDataSource(invocationDao);
+    }
 }
