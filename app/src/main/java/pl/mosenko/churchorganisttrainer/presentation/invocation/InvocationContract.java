@@ -11,10 +11,12 @@ public interface InvocationContract {
 
     interface View extends MVPView {
 
+        void hideProgressBar();
     }
 
     interface Presenter extends MVPPresenter {
 
+        void getInvocations();
     }
 
 }

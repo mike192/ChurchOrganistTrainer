@@ -3,13 +3,17 @@ package pl.mosenko.churchorganisttrainer.presentation.invocation;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import pl.mosenko.churchorganisttrainer.R;
 import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseViewFragment;
 
@@ -23,18 +27,10 @@ import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseViewFragmen
  * create an instance of this fragment.
  */
 public class InvocationFragment extends BaseViewFragment<InvocationContract.Presenter> implements InvocationContract.View {
-
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     @Inject
     InvocationPresenter invocationPresenter;
@@ -43,25 +39,20 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
     }
 
     public static InvocationFragment newInstance() {
-        InvocationFragment fragment = new InvocationFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+        return new InvocationFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_invocation, container, false);
+        View view = inflater.inflate(R.layout.fragment_invocation, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -73,7 +64,6 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
 
     @Override
     public void onAttach(Context context) {
-   //     AndroidSupportInjection.inject(this);
         super.onAttach(context);
 //        if (context instanceof OnFragmentInteractionListener) {
 //            mListener = (OnFragmentInteractionListener) context;
@@ -81,12 +71,24 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
 //            throw new RuntimeException(context.toString()
 //                    + " must implement OnFragmentInteractionListener");
 //        }
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter.getInvocations();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 
     public interface OnFragmentInteractionListener {

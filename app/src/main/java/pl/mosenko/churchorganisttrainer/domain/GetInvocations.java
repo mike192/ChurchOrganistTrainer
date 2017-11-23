@@ -28,10 +28,10 @@ public class GetInvocations extends UseCase<GetInvocations.RequestValues, GetInv
                 .toObservable();
     }
 
-    public class RequestValues implements UseCase.RequestValues {
+    public static class RequestValues implements UseCase.RequestValues {
     }
 
-    public class ResponseValues implements UseCase.ResponseValues {
+    public static class ResponseValues implements UseCase.ResponseValues {
         private final List<Invocation> invocations;
 
         public ResponseValues(List<Invocation> invocations) {
