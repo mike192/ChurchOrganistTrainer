@@ -19,8 +19,10 @@ import pl.mosenko.churchorganisttrainer.di.annotations.PerActivity;
 public abstract class BaseActivityModule {
 
     public static final String ACTIVITY_FRAGMENT_MANAGER = "BaseActivityModule.activityFragmentManager";
+    public static final String ACTIVITY_CONTEXT = "BaseActivityModule.activityContext";
 
     @Binds
+    @Named(ACTIVITY_CONTEXT)
     @PerActivity
     abstract Context activityContext(AppCompatActivity activity);
 

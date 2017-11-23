@@ -18,7 +18,7 @@ import pl.mosenko.churchorganisttrainer.presentation.MainActivity;
  */
 
 @Module(includes = {AndroidInjectionModule.class, AppDatabaseModule.class})
-abstract class AppModule {
+public abstract class AppModule {
 
     @Binds
     @Singleton

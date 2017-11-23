@@ -1,8 +1,10 @@
 package pl.mosenko.churchorganisttrainer.data;
 
+import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -21,15 +23,29 @@ import pl.mosenko.churchorganisttrainer.data.repository.ToneRepository;
 @Module
 public class AppDatabaseModule {
 
+    public static final String APP_CONTEXT = "AppModule.context";
+    private Application application;
+
+    public AppDatabaseModule(Application application) {
+        this.application = application;
+    }
+
+    @Provides
+    @Named(APP_CONTEXT)
+    @Singleton
+    public Context provideContext() {
+        return application.getApplicationContext();
+    }
+
     @Singleton
     @Provides
-    public AppDatabaseCallback provideAppDatabaseCallback(Context context) {
+    public AppDatabaseCallback provideAppDatabaseCallback(@Named(APP_CONTEXT) Context context) {
         return new AppDatabaseCallback(context);
     }
 
     @Singleton
     @Provides
-    public AppDatabase provideAppDatabase(Context context) {
+    public AppDatabase provideAppDatabase(@Named(APP_CONTEXT) Context context) {
         return Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .build();
