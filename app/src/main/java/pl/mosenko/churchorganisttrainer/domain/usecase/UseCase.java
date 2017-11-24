@@ -1,4 +1,4 @@
-package pl.mosenko.churchorganisttrainer.domain;
+package pl.mosenko.churchorganisttrainer.domain.usecase;
 
 
 import io.reactivex.Observable;

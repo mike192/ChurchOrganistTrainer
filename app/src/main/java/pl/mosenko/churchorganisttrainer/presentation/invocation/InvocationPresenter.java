@@ -3,8 +3,8 @@ package pl.mosenko.churchorganisttrainer.presentation.invocation;
 import javax.inject.Inject;
 
 import pl.mosenko.churchorganisttrainer.di.annotations.PerFragment;
-import pl.mosenko.churchorganisttrainer.domain.GetInvocations;
-import pl.mosenko.churchorganisttrainer.domain.UseCase;
+import pl.mosenko.churchorganisttrainer.domain.usecase.GetInvocations;
+import pl.mosenko.churchorganisttrainer.domain.usecase.UseCase;
 import pl.mosenko.churchorganisttrainer.presentation.common.presenter.BasePresenter;
 import timber.log.Timber;
 
@@ -36,6 +36,7 @@ public class InvocationPresenter extends BasePresenter<InvocationContract.View>
             @Override
             public void onError(Throwable e) {
                 //todo generic error handling
+                e.printStackTrace();
                 Timber.e("NIE UDALO SIE");
             }
         }, new GetInvocations.RequestValues());

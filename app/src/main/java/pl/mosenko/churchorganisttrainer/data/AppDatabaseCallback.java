@@ -44,7 +44,7 @@ public class AppDatabaseCallback extends RoomDatabase.Callback {
         for (Tone tone : toneList) {
             ContentValues toneContentValue = toneToContentValue(tone);
             db.insert(Tone.TABLE_NAME, SQLiteDatabase.CONFLICT_FAIL, toneContentValue);
-            Timber.i("INSERTED: " + tone.toString());
+            Timber.e("INSERTED: " + tone.toString());
         }
     }
 

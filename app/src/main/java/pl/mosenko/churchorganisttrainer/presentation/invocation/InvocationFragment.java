@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.mosenko.churchorganisttrainer.R;
 import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseViewFragment;
+import timber.log.Timber;
 
 
 /**

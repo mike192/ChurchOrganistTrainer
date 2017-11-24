@@ -45,9 +45,10 @@ public class AppDatabaseModule {
 
     @Singleton
     @Provides
-    public AppDatabase provideAppDatabase(@Named(APP_CONTEXT) Context context) {
+    public AppDatabase provideAppDatabase(@Named(APP_CONTEXT) Context context, AppDatabaseCallback appDatabaseCallback) {
         return Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class, AppDatabase.DATABASE_NAME)
+                .addCallback(appDatabaseCallback)
                 .build();
     }
 

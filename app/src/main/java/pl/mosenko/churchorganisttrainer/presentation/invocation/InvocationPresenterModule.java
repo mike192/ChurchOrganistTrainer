@@ -5,7 +5,7 @@ import dagger.Module;
 import dagger.Provides;
 import pl.mosenko.churchorganisttrainer.data.repository.InvocationRepository;
 import pl.mosenko.churchorganisttrainer.di.annotations.PerFragment;
-import pl.mosenko.churchorganisttrainer.domain.GetInvocations;
+import pl.mosenko.churchorganisttrainer.domain.usecase.GetInvocations;
 
 /**
  * Created by syk on 20.11.17.
