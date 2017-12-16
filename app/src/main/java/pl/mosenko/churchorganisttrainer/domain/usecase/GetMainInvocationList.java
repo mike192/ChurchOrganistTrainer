@@ -31,9 +31,11 @@ public class GetMainInvocationList extends UseCase<GetMainInvocationList.Request
     protected Observable<ResponseValues> buildUserCaseObservable(RequestValues requestValues) {
         return invocationRepository.getInvocations()
                 .flattenAsObservable(invocations -> invocations)
-                .flatMap(invocation -> statisticRepository.getLastInvocationsStatisticForInvocation(invocation.getId())
-                        .flatMap(invocationsStatistic -> invocationMainMapper.map(invocation, invocationsStatistic))
-                        .toObservable())
+                .flatMap(invocation -> invocationMainMapper.map(invocation, null).toObservable())
+
+//                .flatMap(invocation -> statisticRepository.getLastInvocationsStatisticForInvocation(invocation.getId())
+//                        .flatMap(invocationsStatistic -> invocationMainMapper.map(invocation, invocationsStatistic))
+//                        .toObservable())
                 .toList()
                 .map(ResponseValues::new)
                 .toObservable();
