@@ -45,5 +45,5 @@ public interface MVPPresenter {
      * Ends the presentation. This should be called in the view's (Activity or Fragment)
      * onDestroy() or onDestroyView() method respectively.
      */
-    void onEnd();
+    void onDestroy();
 }

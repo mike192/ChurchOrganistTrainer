@@ -17,13 +17,13 @@
         android:layout_marginTop="8dp"
         android:textAppearance="@style/AppTheme.MainItem"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numberOfAllInvocationTonesTV"
+        app:layout_constraintEnd_toStartOf="@+id/successfulResponsePercentageTV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Ojcze nasz" />
 
     <TextView
-        android:id="@+id/numberOfAllInvocationTonesTV"
+        android:id="@+id/successfulResponsePercentageTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -31,22 +31,8 @@
         android:layout_marginTop="8dp"
         android:textAppearance="@style/AppTheme.MainItem.LearntItem"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/numberOfPassedForFirstTimeTV"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="15" />
-
-    <TextView
-        android:id="@+id/numberOfPassedForFirstTimeTV"
-        style="@style/AppTheme.MainItem.ToLearningItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="13" />
-
+        tools:text="75%" />
 
 </android.support.constraint.ConstraintLayout>

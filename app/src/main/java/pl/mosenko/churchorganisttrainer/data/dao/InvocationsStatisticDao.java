@@ -20,5 +20,5 @@ public interface InvocationsStatisticDao {
     Maybe<InvocationsStatistic> getLastInvocationsStatisticForInvocation(int invocationId);
 
     @Insert
-    void insert(InvocationsStatistic invocationsStatistic);
+    long insert(InvocationsStatistic invocationsStatistic);
 }

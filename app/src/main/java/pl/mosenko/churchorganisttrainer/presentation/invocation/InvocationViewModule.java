@@ -2,10 +2,9 @@ package pl.mosenko.churchorganisttrainer.presentation.invocation;
 
 import android.support.v4.app.Fragment;
 
-import javax.inject.Named;
-
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 import pl.mosenko.churchorganisttrainer.di.annotations.PerFragment;
 import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseFragmentModule;
 
@@ -23,4 +22,10 @@ public abstract class InvocationViewModule {
     @Binds
     @PerFragment
     abstract InvocationContract.View provideInvocationView(InvocationFragment invocationFragment);
+
+    @Provides
+    @PerFragment
+    public static InvocationAdapter provideInvocationAdapter() {
+        return new InvocationAdapter();
+    }
 }

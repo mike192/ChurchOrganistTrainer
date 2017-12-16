@@ -1,5 +1,7 @@
 package pl.mosenko.churchorganisttrainer.presentation.invocation;
 
+import java.util.List;
+
 import pl.mosenko.churchorganisttrainer.presentation.common.presenter.MVPPresenter;
 import pl.mosenko.churchorganisttrainer.presentation.common.view.MVPView;
 
@@ -10,6 +12,8 @@ import pl.mosenko.churchorganisttrainer.presentation.common.view.MVPView;
 public interface InvocationContract {
 
     interface View extends MVPView {
+
+        void showInvocationList(List<InvocationModel> invocationModels);
 
         void hideProgressBar();
     }

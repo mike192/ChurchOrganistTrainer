@@ -4,8 +4,10 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import pl.mosenko.churchorganisttrainer.data.repository.InvocationRepository;
+import pl.mosenko.churchorganisttrainer.data.repository.InvocationStatisticRepository;
 import pl.mosenko.churchorganisttrainer.di.annotations.PerFragment;
-import pl.mosenko.churchorganisttrainer.domain.usecase.GetInvocations;
+import pl.mosenko.churchorganisttrainer.domain.services.InvocationMainMapper;
+import pl.mosenko.churchorganisttrainer.domain.usecase.GetMainInvocationList;
 
 /**
  * Created by syk on 20.11.17.
@@ -20,7 +22,7 @@ public abstract class InvocationPresenterModule {
 
     @Provides
     @PerFragment
-    public static GetInvocations provideGetInvocations(InvocationRepository invocationRepository) {
-        return new GetInvocations(invocationRepository);
+    public static GetMainInvocationList provideGetInvocations(InvocationRepository invocationRepository, InvocationStatisticRepository statisticRepository, InvocationMainMapper invocationMainMapper) {
+        return new GetMainInvocationList(invocationRepository, statisticRepository, invocationMainMapper);
     }
 }

@@ -5,10 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,7 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import pl.mosenko.churchorganisttrainer.R;
 import pl.mosenko.churchorganisttrainer.presentation.common.view.BaseViewFragment;
-import timber.log.Timber;
 
 
 /**
@@ -32,9 +36,13 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView(R.id.invocationsRecyclerView)
+    RecyclerView invocationsRecyclerView;
 
     @Inject
     InvocationPresenter invocationPresenter;
+    @Inject
+    InvocationAdapter invocationAdapter;
 
     public InvocationFragment() {
     }
@@ -53,7 +61,35 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_invocation, container, false);
         ButterKnife.bind(this, view);
+        setupRecyclerView();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadInvocations();
+    }
+
+    private void loadInvocations() {
+        presenter.getInvocations();
+    }
+
+    @Override
+    public void showInvocationList(List<InvocationModel> invocationModels) {
+        invocationAdapter.setInvocationModels(invocationModels);
+    }
+
+    private void setupRecyclerView() {
+        invocationAdapter.setOnItemClickListener(this::onInvocationItemClick);
+        invocationsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        invocationsRecyclerView.setAdapter(invocationAdapter);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.onDestroy();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,10 +111,9 @@ public class InvocationFragment extends BaseViewFragment<InvocationContract.Pres
 
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        presenter.getInvocations();
+    private void onInvocationItemClick(InvocationModel invocationModel) {
+        Toast.makeText(getContext(), "onInvocationItemClick", Toast.LENGTH_SHORT).show();
+        //TODO go to game mode
     }
 
     @Override

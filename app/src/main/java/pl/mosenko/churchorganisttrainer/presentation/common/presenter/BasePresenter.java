@@ -34,6 +34,6 @@ public abstract class BasePresenter<V extends MVPView> implements MVPPresenter {
     }
 
     @Override
-    public void onEnd() {
+    public void onDestroy() {
     }
 }

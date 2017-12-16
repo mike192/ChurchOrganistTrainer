@@ -44,7 +44,7 @@ public abstract class BaseViewFragment<T extends MVPPresenter> extends BaseFragm
 
     @Override
     public void onDestroyView() {
-        presenter.onEnd();
+        presenter.onDestroy();
         super.onDestroyView();
     }
 }
